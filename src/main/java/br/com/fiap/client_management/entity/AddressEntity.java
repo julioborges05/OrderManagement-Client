@@ -2,6 +2,8 @@ package br.com.fiap.client_management.entity;
 
 import io.micrometer.common.util.StringUtils;
 
+import java.util.Objects;
+
 public class AddressEntity {
 
     private String street;
@@ -54,4 +56,22 @@ public class AddressEntity {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AddressEntity address = (AddressEntity) o;
+        return Objects.equals(street, address.street)
+                && Objects.equals(number, address.number)
+                && Objects.equals(complement, address.complement)
+                && Objects.equals(cep, address.cep)
+                && Objects.equals(city, address.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(street, number, complement, cep, city);
+    }
 }

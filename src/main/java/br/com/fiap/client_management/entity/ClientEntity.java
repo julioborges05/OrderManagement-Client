@@ -3,6 +3,7 @@ package br.com.fiap.client_management.entity;
 import io.micrometer.common.util.StringUtils;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class ClientEntity {
 
@@ -51,5 +52,33 @@ public class ClientEntity {
         }
     }
 
+    public ClientEntity updateFields(ClientEntity newFields) {
+        if (!this.cpf.equals(newFields.cpf)) {
+            throw new IllegalArgumentException("Cpf cannot be changed");
+        }
 
+        this.name = newFields.name;
+        this.birthDate = newFields.birthDate;
+        this.address = newFields.address;
+
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ClientEntity that = (ClientEntity) o;
+        return Objects.equals(name, that.name)
+                && Objects.equals(cpf, that.cpf)
+                && Objects.equals(birthDate, that.birthDate)
+                && Objects.equals(address, that.address);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, cpf, birthDate, address);
+    }
 }
