@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  client-db:
+    image: postgres:latest
+    container_name: client-db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=client-db
+    ports:
+      - "5433:5432"
