@@ -1,22 +1,22 @@
-package br.com.fiap.client_management.entity;
+package br.com.fiap.client_management.domain;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class AddressEntityTest {
+public class AddressTest {
 
     private final String defaultStreet = "Paulista Avenue";
     private final String defaultNumber = "1000";
     private final String defaultComplement = "Apt 123";
-    private final String defaultCep = "01310-100";
+    private final String defaultZipCode = "01310-100";
     private final String defaultCity = "São Paulo";
 
     @Test
     void throwsExceptionWhenStreetIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new AddressEntity(null, this.defaultNumber, this.defaultComplement, this.defaultCep, this.defaultCity),
+                () -> new Address(null, this.defaultNumber, this.defaultComplement, this.defaultZipCode, this.defaultCity),
                 "Street is required"
         );
     }
@@ -25,7 +25,7 @@ public class AddressEntityTest {
     void throwsExceptionWhenStreetIsEmpty() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new AddressEntity("", this.defaultNumber, this.defaultComplement, this.defaultCep, this.defaultCity),
+                () -> new Address("", this.defaultNumber, this.defaultComplement, this.defaultZipCode, this.defaultCity),
                 "Street is required"
         );
     }
@@ -34,7 +34,7 @@ public class AddressEntityTest {
     void throwsExceptionWhenNumberIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new AddressEntity(this.defaultStreet, null, this.defaultComplement, this.defaultCep, this.defaultCity),
+                () -> new Address(this.defaultStreet, null, this.defaultComplement, this.defaultZipCode, this.defaultCity),
                 "Number is required"
         );
     }
@@ -43,25 +43,25 @@ public class AddressEntityTest {
     void throwsExceptionWhenNumberIsEmpty() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new AddressEntity(this.defaultStreet, "", this.defaultComplement, this.defaultCep, this.defaultCity),
+                () -> new Address(this.defaultStreet, "", this.defaultComplement, this.defaultZipCode, this.defaultCity),
                 "Number is required"
         );
     }
 
     @Test
-    void throwsExceptionWhenCepIsNull() {
+    void throwsExceptionWhenZipCodeIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new AddressEntity(this.defaultStreet, this.defaultNumber, this.defaultComplement, null, this.defaultCity),
+                () -> new Address(this.defaultStreet, this.defaultNumber, this.defaultComplement, null, this.defaultCity),
                 "Cep is required"
         );
     }
 
     @Test
-    void throwsExceptionWhenCepIsEmpty() {
+    void throwsExceptionWhenZipCodeIsEmpty() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new AddressEntity(this.defaultStreet, this.defaultNumber, this.defaultComplement, "", this.defaultCity),
+                () -> new Address(this.defaultStreet, this.defaultNumber, this.defaultComplement, "", this.defaultCity),
                 "Cep is required"
         );
     }
@@ -70,7 +70,7 @@ public class AddressEntityTest {
     void throwsExceptionWhenCityIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new AddressEntity(this.defaultStreet, this.defaultNumber, this.defaultComplement, this.defaultCep, null),
+                () -> new Address(this.defaultStreet, this.defaultNumber, this.defaultComplement, this.defaultZipCode, null),
                 "City is required"
         );
     }
@@ -79,7 +79,7 @@ public class AddressEntityTest {
     void throwsExceptionWhenCityIsEmpty() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new AddressEntity(this.defaultStreet, this.defaultNumber, this.defaultComplement, this.defaultCep, ""),
+                () -> new Address(this.defaultStreet, this.defaultNumber, this.defaultComplement, this.defaultZipCode, ""),
                 "City is required"
         );
     }
@@ -88,7 +88,7 @@ public class AddressEntityTest {
     void throwsExceptionWhenComplementIsEmpty() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new AddressEntity(this.defaultStreet, this.defaultNumber, "", this.defaultCep, this.defaultCity),
+                () -> new Address(this.defaultStreet, this.defaultNumber, "", this.defaultZipCode, this.defaultCity),
                 "Complement is required"
         );
     }

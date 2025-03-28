@@ -1,7 +1,6 @@
 package br.com.fiap.client_management.usecase;
 
-import br.com.fiap.client_management.entity.AddressEntity;
-import br.com.fiap.client_management.entity.ClientEntity;
+import br.com.fiap.client_management.domain.Client;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -25,7 +24,7 @@ public class CreateClientUseCaseTest {
         var result = CreateClientUseCase.createClient(this.defaultName, this.defaultCpf, this.defaultBirthDate,
                 this.defaultStreet, this.defaultNumber, this.defaultComplement, this.defaultCep, this.defaultCity);
 
-        assertInstanceOf(ClientEntity.class, result);
+        assertInstanceOf(Client.class, result);
     }
 
 }

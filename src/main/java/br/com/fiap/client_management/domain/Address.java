@@ -1,28 +1,28 @@
-package br.com.fiap.client_management.entity;
+package br.com.fiap.client_management.domain;
 
 import io.micrometer.common.util.StringUtils;
 
 import java.util.Objects;
 
-public class AddressEntity {
+public class Address {
 
     private String street;
     private String number;
     private String complement;
-    private String cep;
+    private String zipCode;
     private String city;
 
-    public AddressEntity(String street, String number, String complement, String cep, String city) {
+    public Address(String street, String number, String complement, String zipCode, String city) {
         validateAddressStreet(street);
         validateAddressNumber(number);
         validateAddressComplement(complement);
-        validateAddressCep(cep);
+        validateAddressZipCode(zipCode);
         validateAddressCity(city);
 
         this.street = street;
         this.number = number;
         this.complement = complement;
-        this.cep = cep;
+        this.zipCode = zipCode;
         this.city = city;
     }
 
@@ -38,7 +38,7 @@ public class AddressEntity {
         }
     }
 
-    private void validateAddressCep(String cep) {
+    private void validateAddressZipCode(String cep) {
         if (StringUtils.isBlank(cep)) {
             throw new IllegalArgumentException("Cep is required");
         }
@@ -56,22 +56,38 @@ public class AddressEntity {
         }
     }
 
+    public String getStreet() {
+        return street;
+    }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public String getComplement() {
+        return complement;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        AddressEntity address = (AddressEntity) o;
+        Address address = (Address) o;
         return Objects.equals(street, address.street)
                 && Objects.equals(number, address.number)
                 && Objects.equals(complement, address.complement)
-                && Objects.equals(cep, address.cep)
+                && Objects.equals(zipCode, address.zipCode)
                 && Objects.equals(city, address.city);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(street, number, complement, cep, city);
-    }
 }

@@ -1,4 +1,4 @@
-package br.com.fiap.client_management.entity;
+package br.com.fiap.client_management.domain;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,18 +6,18 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ClientEntityTest {
+public class ClientTest {
 
     private final String defaultName = "John Doe";
     private final String defaultCpf = "12345678901";
     private final LocalDate defaultBirthDate = LocalDate.of(1980, 1, 6);
-    private final AddressEntity defaultAddressEntity = new AddressEntity("Paulista Avenue", "1000", "Apt 123", "01310-100", "São Paulo");
+    private final Address defaultAddress = new Address("Paulista Avenue", "1000", "Apt 123", "01310-100", "São Paulo");
 
     @Test
     void throwsExceptionWhenNameIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new ClientEntity(null, this.defaultCpf, this.defaultBirthDate, this.defaultAddressEntity),
+                () -> new Client(null, this.defaultCpf, this.defaultBirthDate, this.defaultAddress),
                 "Name is required"
         );
     }
@@ -26,7 +26,7 @@ public class ClientEntityTest {
     void throwsExceptionWhenNameIsEmpty() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new ClientEntity("", this.defaultCpf, this.defaultBirthDate, this.defaultAddressEntity),
+                () -> new Client("", this.defaultCpf, this.defaultBirthDate, this.defaultAddress),
                 "Name is required"
         );
     }
@@ -35,7 +35,7 @@ public class ClientEntityTest {
     void throwsExceptionWhenCpfIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new ClientEntity(this.defaultName, null, this.defaultBirthDate, this.defaultAddressEntity),
+                () -> new Client(this.defaultName, null, this.defaultBirthDate, this.defaultAddress),
                 "Cpf is required"
         );
     }
@@ -44,7 +44,7 @@ public class ClientEntityTest {
     void throwsExceptionWhenCpfIsEmpty() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new ClientEntity(this.defaultName, "", this.defaultBirthDate, this.defaultAddressEntity),
+                () -> new Client(this.defaultName, "", this.defaultBirthDate, this.defaultAddress),
                 "Cpf is required"
         );
     }
@@ -53,7 +53,7 @@ public class ClientEntityTest {
     void throwsExceptionWhenBirthDateIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new ClientEntity(this.defaultName, this.defaultCpf, null, this.defaultAddressEntity),
+                () -> new Client(this.defaultName, this.defaultCpf, null, this.defaultAddress),
                 "Birth date is required"
         );
     }
@@ -64,7 +64,7 @@ public class ClientEntityTest {
 
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new ClientEntity(this.defaultName, this.defaultCpf, futureDate, this.defaultAddressEntity),
+                () -> new Client(this.defaultName, this.defaultCpf, futureDate, this.defaultAddress),
                 "Birth date must be in the past"
         );
     }
@@ -73,7 +73,7 @@ public class ClientEntityTest {
     void throwsExceptionWhenAddressIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> new ClientEntity(this.defaultName, this.defaultCpf, this.defaultBirthDate, null),
+                () -> new Client(this.defaultName, this.defaultCpf, this.defaultBirthDate, null),
                 "Address is required"
         );
     }
