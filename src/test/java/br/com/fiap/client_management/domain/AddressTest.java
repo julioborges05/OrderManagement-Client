@@ -2,6 +2,7 @@ package br.com.fiap.client_management.domain;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AddressTest {
@@ -91,6 +92,17 @@ public class AddressTest {
                 () -> new Address(this.defaultStreet, this.defaultNumber, "", this.defaultZipCode, this.defaultCity),
                 "Complement is required"
         );
+    }
+
+    @Test
+    void validAddress() {
+        Address address = new Address(this.defaultStreet, this.defaultNumber, this.defaultComplement, this.defaultZipCode, this.defaultCity);
+
+        assertEquals(this.defaultStreet, address.getStreet());
+        assertEquals(this.defaultNumber, address.getNumber());
+        assertEquals(this.defaultComplement, address.getComplement());
+        assertEquals(this.defaultZipCode, address.getZipCode());
+        assertEquals(this.defaultCity, address.getCity());
     }
 
 }

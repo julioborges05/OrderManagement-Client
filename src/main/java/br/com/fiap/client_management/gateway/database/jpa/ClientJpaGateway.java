@@ -36,6 +36,12 @@ public class ClientJpaGateway implements ClientGateway {
             throw new IllegalArgumentException("Client already exists");
         }
 
+        Optional<ClientEntity> optionalClient = clientRepository.findByCpf(client.getCpf());
+
+        if (optionalClient.isPresent()) {
+            throw new IllegalArgumentException("Client already exists");
+        }
+
         ClientEntity clientEntity = clientRepository.save(new ClientEntity(client));
         return clientEntity.toDomain();
     }

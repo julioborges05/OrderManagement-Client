@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ClientTest {
@@ -76,6 +77,17 @@ public class ClientTest {
                 () -> new Client(this.defaultName, this.defaultCpf, this.defaultBirthDate, null),
                 "Address is required"
         );
+    }
+
+    @Test
+    void validClient() {
+        Client client = new Client(1L, this.defaultName, this.defaultCpf, this.defaultBirthDate, this.defaultAddress);
+
+        assertEquals(1L, client.getId());
+        assertEquals(this.defaultName, client.getName());
+        assertEquals(this.defaultCpf, client.getCpf());
+        assertEquals(this.defaultBirthDate, client.getBirthDate());
+        assertEquals(this.defaultAddress, client.getAddress());
     }
 
 }

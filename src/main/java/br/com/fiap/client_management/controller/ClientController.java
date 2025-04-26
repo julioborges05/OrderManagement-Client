@@ -9,8 +9,6 @@ import br.com.fiap.client_management.usecase.CreateClientUseCase;
 import br.com.fiap.client_management.usecase.UpdateClientUseCase;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.*;
-
 @RestController
 @RequestMapping("/client")
 public class ClientController {
