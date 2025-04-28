@@ -78,4 +78,14 @@ public class ClientJpaGateway implements ClientGateway {
         clientRepository.save(clientEntity.get());
     }
 
+    @Override
+    public boolean getClientIsActive(Long clientId) {
+        var clientEntity = clientRepository.findClientById(clientId);
+
+        if (clientEntity.isEmpty()) {
+            throw new IllegalArgumentException("Client not found");
+        }
+
+        return clientEntity.get().getIsActive();
+    }
 }

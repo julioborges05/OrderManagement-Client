@@ -114,6 +114,10 @@ public class ClientEntity {
         this.isActive = isActive;
     }
 
+    public boolean getIsActive() {
+        return this.isActive;
+    }
+
     public Client toDomain() {
         Address address = new Address(street, number, complement, zipCode, city);
 

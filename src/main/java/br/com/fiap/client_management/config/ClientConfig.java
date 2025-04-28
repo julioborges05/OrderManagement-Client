@@ -12,5 +12,4 @@ public class ClientConfig {
     public ClientJpaGateway clientJpaGateway(ClientRepository clientRepository) {
         return new ClientJpaGateway(clientRepository);
     }
-
 }
