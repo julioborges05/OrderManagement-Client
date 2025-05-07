@@ -13,4 +13,6 @@ public interface ClientGateway {
     Client update(Client client);
 
     void delete(Client client);
+
+    boolean getClientIsActive(Long clientId);
 }

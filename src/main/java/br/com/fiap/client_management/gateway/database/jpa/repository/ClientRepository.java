@@ -20,4 +20,9 @@ public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
            """, nativeQuery = true)
     Optional<ClientEntity> findById(Long id);
 
+    @Query(value = """
+        select * from client c where c.id = :id
+        """, nativeQuery = true)
+    Optional<ClientEntity>  findClientById(Long id);
+
 }
