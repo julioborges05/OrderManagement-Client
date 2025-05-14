@@ -10,3 +10,13 @@ services:
       - POSTGRES_DB=client-db
     ports:
       - "5433:5432"
+
+  client:
+    image: julioborges05/ordermanagement-client
+    container_name: ordermanagement-client
+    environment:
+      - DB_URL=jdbc:postgresql://client-db:5432/client-db
+      - DB_USER=user
+      - DB_PASSWORD=password
+    ports:
+      - "8080:8080"
