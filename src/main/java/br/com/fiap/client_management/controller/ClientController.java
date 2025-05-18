@@ -36,7 +36,7 @@ public class ClientController {
         return new ClientDto(clientJpaGateway.create(client));
     }
 
-    @PutMapping("/updateUser/{id}")
+    @PutMapping("/updateClient/{id}")
     public ClientDto updateClient(@PathVariable("id") Long clientId, @RequestBody ClientDto newClient) {
         Client client = clientJpaGateway.findById(clientId);
         Client updatedClient = UpdateClientUseCase.updateClient(client, toDomain(newClient));
@@ -44,7 +44,7 @@ public class ClientController {
         return new ClientDto(clientJpaGateway.update(updatedClient));
     }
 
-    @DeleteMapping("/deleteUser/{id}")
+    @DeleteMapping("/deleteClient/{id}")
     public void deleteClient(@PathVariable("id") Long clientId) {
         Client client = clientJpaGateway.findById(clientId);
 

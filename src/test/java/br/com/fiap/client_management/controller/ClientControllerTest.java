@@ -1,6 +1,5 @@
 package br.com.fiap.client_management.controller;
 
-import br.com.fiap.client_management.controller.dto.AddressDto;
 import br.com.fiap.client_management.controller.dto.ClientDto;
 import br.com.fiap.client_management.domain.Address;
 import br.com.fiap.client_management.domain.Client;
@@ -12,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.LocalDate;
